@@ -1,19 +1,16 @@
     async function getPhotographers() {
 
        //Get the JSON data
-        await fetch('../../data/photographers.json')
-        .then(response => {
+        try {
+            const response = await fetch('../../data/photographers.json');
             if (!response.ok) {
                 throw new Error('Error to read the JSON file');
             }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
+            const data = await response.json();
+            return data; 
+        } catch (error) {
             console.error('Error:', error);
-        });
+        }
     }
 
     async function displayData(photographers) {
