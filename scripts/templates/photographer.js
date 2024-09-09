@@ -13,10 +13,15 @@ function photographerTemplate(data) {
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         const h2 = document.createElement( 'h2' );
+        const p = document.createElement( 'p' );
+        const location = document.createElement( 'p' );
         h2.textContent = name;
+        location.textContent = city + ", " + country;
         article.appendChild(img);
         article.appendChild(h2);
+        article.appendChild(location);
+        article.appendChild(p);
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+    return { name, picture, city, country, getUserCardDOM }
 }
