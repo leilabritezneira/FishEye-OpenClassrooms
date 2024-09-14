@@ -54,8 +54,10 @@ h1 {
     box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.25);
 }
 
-.location_card{
-
+.location_card {
+    color: #901C1C;
+    font-size: 13px;
+    margin: 0px;
 }
 
 .phrase_card{
