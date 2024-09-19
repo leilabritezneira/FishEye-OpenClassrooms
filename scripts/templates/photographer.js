@@ -10,9 +10,13 @@ function photographerTemplate(data) {
     
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
+        const link = document.createElement( 'a' );
+        link.setAttribute("href", `./photographer.html`)
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
         const h2 = document.createElement( 'h2' );
+        link.appendChild(img);
+        link.appendChild(h2);
         const location = document.createElement( 'p' );
         location.className = 'location_card';
         const phrase = document.createElement( 'p' );
@@ -23,8 +27,7 @@ function photographerTemplate(data) {
         location.textContent = city + ", " + country;
         phrase.textContent = tagline;
         cost.textContent = price + "€/jour";
-        article.appendChild(img);
-        article.appendChild(h2);
+        article.appendChild(link);
         article.appendChild(location);
         article.appendChild(phrase);
         article.appendChild(cost);
