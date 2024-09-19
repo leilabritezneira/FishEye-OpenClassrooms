@@ -71,3 +71,10 @@ h1 {
     font-size: 9px;
     margin: 2px;
 }
+
+a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
