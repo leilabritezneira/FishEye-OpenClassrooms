@@ -19,4 +19,12 @@ async function getPhotographerData(id) {
     }
 }
 
-getPhotographerData(id);
+async function init() {
+    // Récupère les datas du photographer
+    const { photographer } = await getPhotographerData(id);;
+    
+    
+    //displayData(photographer);
+}
+
+init();
