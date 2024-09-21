@@ -11,7 +11,7 @@ function photographerTemplate(data) {
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         const link = document.createElement( 'a' );
-        link.setAttribute("href", `./photographer.html/${data.id}`);
+        link.setAttribute("href", `./photographer.html?id=${data.id}`);
         link.setAttribute("aria-label", name);
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
@@ -35,6 +35,6 @@ function photographerTemplate(data) {
         article.appendChild(cost);
         return (article);
     }
-    
+
     return { name, picture, getUserCardDOM }
 }
