@@ -12,19 +12,25 @@ async function getPhotographerData(id) {
         const data = await response.json();
         // Filter photographer with the ID from the URL
         const photographer = data.photographers.find(p => p.id == id);
-        console.log(photographer);
         return photographer;
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
+async function displayData(photographer) {
+    const photographersSection = document.querySelector(".photograph-header");
+
+    const photographerHeader = photographerHeader(photographer);
+}
+
+
+
 async function init() {
     // Récupère les datas du photographer
-    const { photographer } = await getPhotographerData(id);;
-    
-    
-    //displayData(photographer);
+    const { photographer } = await getPhotographerData(id);
+    console.log(photographer);
+    displayData(photographer);
 }
 
 init();
