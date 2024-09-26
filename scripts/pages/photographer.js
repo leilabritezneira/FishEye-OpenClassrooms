@@ -27,7 +27,6 @@ async function displayData(photographer) {
 }
 
 function photographerHeader(data) {
-    console.log(data);
     const name = data.name;
     return name
 }
