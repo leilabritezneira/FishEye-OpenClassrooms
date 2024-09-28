@@ -23,12 +23,15 @@ async function getPhotographerData(id) {
 
 async function displayData(photographer) {
     const photographersSection = document.querySelector(".photograph-header");
-
+    const photographerHeaderDOM = photographerHeader(photographer);
+    photographersSection.innerHTML = photographerHeaderDOM;
 }
 
 function photographerHeader(data) {
-    const name = data.name;
-    return name
+    console.log(data);
+    
+    const { name, city, country, tagline, portrait } = data;
+
 }
 
 async function init() {
