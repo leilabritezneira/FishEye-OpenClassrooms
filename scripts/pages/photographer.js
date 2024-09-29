@@ -23,9 +23,12 @@ async function getPhotographerData(id) {
 
 async function displayData(photographer) {
     const photographersSection = document.querySelector(".photographer-information");
+    const photographersImage= document.querySelector(".photographer-image");
     const photographerHeaderDOM = photographerHeader(photographer);
+    const photographerPictureDOM = photographerPicture(photographer);
 
     photographersSection.appendChild(photographerHeaderDOM);
+    photographersImage.appendChild(photographerPictureDOM);
 }
 
 function photographerHeader(data) {
@@ -46,6 +49,18 @@ function photographerHeader(data) {
         photographerHTML.appendChild(phrase);
 
     return photographerHTML;
+}
+
+function photographerPicture(data) {
+
+    const { name, portrait } = data;
+    const picture = `assets/photographers/${portrait}`;
+
+    const photographerImageHTML = document.createElement( 'img' );
+    photographerImageHTML.setAttribute("src", picture);
+    photographerImageHTML.setAttribute("alt", name);
+
+    return photographerImageHTML;
 }
 
 async function init() {
