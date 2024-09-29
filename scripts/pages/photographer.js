@@ -22,16 +22,30 @@ async function getPhotographerData(id) {
 }
 
 async function displayData(photographer) {
-    const photographersSection = document.querySelector(".photograph-header");
+    const photographersSection = document.querySelector(".photographer-information");
     const photographerHeaderDOM = photographerHeader(photographer);
-    photographersSection.innerHTML = photographerHeaderDOM;
+
+    photographersSection.appendChild(photographerHeaderDOM);
 }
 
 function photographerHeader(data) {
-    console.log(data);
-    
-    const { name, city, country, tagline, portrait } = data;
 
+    const { name, city, country, tagline } = data;
+
+    const photographerHTML = document.createElement( 'article' );
+        const photographer = document.createElement( 'h2' );
+        const location = document.createElement( 'p' );
+        location.className = 'location_photographer';
+        const phrase = document.createElement( 'p' );
+        phrase.className = 'phrase_photographer';
+        photographer.textContent = name;
+        location.textContent = city + ", " + country;
+        phrase.textContent = tagline;
+        photographerHTML.appendChild(photographer);
+        photographerHTML.appendChild(location);
+        photographerHTML.appendChild(phrase);
+
+    return photographerHTML;
 }
 
 async function init() {
