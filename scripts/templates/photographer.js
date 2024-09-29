@@ -10,11 +10,15 @@ function photographerTemplate(data) {
     
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
+        const link = document.createElement( 'a' );
+        link.setAttribute("href", `./photographer.html?id=${data.id}`);
+        link.setAttribute("aria-label", name);
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
-        img.className = 'picture';
+        img.setAttribute("alt", name);
         const h2 = document.createElement( 'h2' );
-        h2.className = 'name_card';
+        link.appendChild(img);
+        link.appendChild(h2);
         const location = document.createElement( 'p' );
         location.className = 'location_card';
         const phrase = document.createElement( 'p' );
@@ -25,12 +29,12 @@ function photographerTemplate(data) {
         location.textContent = city + ", " + country;
         phrase.textContent = tagline;
         cost.textContent = price + "€/jour";
-        article.appendChild(img);
-        article.appendChild(h2);
+        article.appendChild(link);
         article.appendChild(location);
         article.appendChild(phrase);
         article.appendChild(cost);
         return (article);
     }
+
     return { name, picture, getUserCardDOM }
 }
