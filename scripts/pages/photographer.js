@@ -21,7 +21,22 @@ async function getPhotographerData(id) {
     }
 }
 
-async function displayData(photographer) {
+async function getPhotoData(id) {
+    try {
+        const response = await fetch('../../data/photographers.json');
+        if (!response.ok) {
+            throw new Error('Error reading the JSON file');
+        }
+        const data = await response.json();
+        // Filter photo with photographer ID
+        const photos = data.media.filter(p => p.photographerId == id);
+        return photos;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+async function displayData(photographer, photos) {
     const photographersSection = document.querySelector(".photographer-information");
     const photographersImage= document.querySelector(".photographer-image");
     const photographerHeaderDOM = photographerHeader(photographer);
@@ -67,7 +82,8 @@ async function init() {
     // Récupère les datas du photographer
     const id = await getId();
     const photographer = await getPhotographerData(id);
-    displayData(photographer);
+    const photos = await getPhotoData(id);
+    displayData(photographer, photos);
 }
 
 init();
