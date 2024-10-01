@@ -39,11 +39,14 @@ async function getPhotoData(id) {
 async function displayData(photographer, photos) {
     const photographersSection = document.querySelector(".photographer-information");
     const photographersImage= document.querySelector(".photographer-image");
+    const photographersPrice= document.querySelector(".photographer-price");
     const photographerHeaderDOM = photographerHeader(photographer);
     const photographerPictureDOM = photographerPicture(photographer);
+    const photographersPriceDOM = photographerPrice(photographer, photos);
 
     photographersSection.appendChild(photographerHeaderDOM);
     photographersImage.appendChild(photographerPictureDOM);
+    photographersPrice.appendChild(photographersPriceDOM);
 }
 
 function photographerHeader(data) {
@@ -76,6 +79,27 @@ function photographerPicture(data) {
     photographerImageHTML.setAttribute("alt", name);
 
     return photographerImageHTML;
+}
+
+function photographerPrice(data, photos) {
+
+    const price = data.price;
+    let totalLikes = 0;
+
+    photos.forEach(photo => {
+        totalLikes += photo.likes;
+    });
+
+    const photographerPriceHTML = document.createElement( 'article' );
+        const priceDay = document.createElement( 'p' );
+        const favorite = document.createElement( 'p' );
+        priceDay.className = 'price_photographer';
+        priceDay.textContent = price + "€ / jour";
+        favorite.textContent = totalLikes + " ♥ ";
+        photographerPriceHTML.appendChild(favorite);
+        photographerPriceHTML.appendChild(priceDay);
+
+    return photographerPriceHTML;
 }
 
 async function init() {
