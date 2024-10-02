@@ -21,11 +21,32 @@ async function getPhotographerData(id) {
     }
 }
 
-async function displayData(photographer) {
+async function getPhotoData(id) {
+    try {
+        const response = await fetch('../../data/photographers.json');
+        if (!response.ok) {
+            throw new Error('Error reading the JSON file');
+        }
+        const data = await response.json();
+        // Filter photo with photographer ID
+        const photos = data.media.filter(p => p.photographerId == id);
+        return photos;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+async function displayData(photographer, photos) {
     const photographersSection = document.querySelector(".photographer-information");
+    const photographersImage= document.querySelector(".photographer-image");
+    const photographersPrice= document.querySelector(".photographer-price");
     const photographerHeaderDOM = photographerHeader(photographer);
+    const photographerPictureDOM = photographerPicture(photographer);
+    const photographersPriceDOM = photographerPrice(photographer, photos);
 
     photographersSection.appendChild(photographerHeaderDOM);
+    photographersImage.appendChild(photographerPictureDOM);
+    photographersPrice.appendChild(photographersPriceDOM);
 }
 
 function photographerHeader(data) {
@@ -48,11 +69,45 @@ function photographerHeader(data) {
     return photographerHTML;
 }
 
+function photographerPicture(data) {
+
+    const { name, portrait } = data;
+    const picture = `assets/photographers/${portrait}`;
+
+    const photographerImageHTML = document.createElement( 'img' );
+    photographerImageHTML.setAttribute("src", picture);
+    photographerImageHTML.setAttribute("alt", name);
+
+    return photographerImageHTML;
+}
+
+function photographerPrice(data, photos) {
+
+    const price = data.price;
+    let totalLikes = 0;
+
+    photos.forEach(photo => {
+        totalLikes += photo.likes;
+    });
+
+    const photographerPriceHTML = document.createElement( 'article' );
+        const priceDay = document.createElement( 'p' );
+        const favorite = document.createElement( 'p' );
+        priceDay.className = 'price_photographer';
+        priceDay.textContent = price + "€ / jour";
+        favorite.textContent = totalLikes + " ♥ ";
+        photographerPriceHTML.appendChild(favorite);
+        photographerPriceHTML.appendChild(priceDay);
+
+    return photographerPriceHTML;
+}
+
 async function init() {
     // Récupère les datas du photographer
     const id = await getId();
     const photographer = await getPhotographerData(id);
-    displayData(photographer);
+    const photos = await getPhotoData(id);
+    displayData(photographer, photos);
 }
 
 init();
