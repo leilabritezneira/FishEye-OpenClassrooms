@@ -111,3 +111,15 @@ form input {
     font-weight: lighter;
     margin: 15px 0px;
 }
+
+.photographer-price {
+    background-color: #DB8876;
+    position: absolute;
+    margin-left: 80%;
+   /* margin-bottom: 0px;
+    margin-right: 0px;
+    margin-top: 25%;
+    display: contents;*/
+    padding: 10px 20px;
+    border-radius: 20%;
+}
