@@ -116,10 +116,15 @@ form input {
     background-color: #DB8876;
     position: absolute;
     margin-left: 80%;
-   /* margin-bottom: 0px;
-    margin-right: 0px;
-    margin-top: 25%;
-    display: contents;*/
-    padding: 10px 20px;
-    border-radius: 20%;
+    padding: 0px 15px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.detail_photographer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
 }
