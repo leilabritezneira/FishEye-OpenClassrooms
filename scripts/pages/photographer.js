@@ -93,6 +93,7 @@ function photographerPrice(data, photos) {
     const photographerPriceHTML = document.createElement( 'article' );
         const priceDay = document.createElement( 'p' );
         const favorite = document.createElement( 'p' );
+        photographerPriceHTML.className = 'detail_photographer';
         priceDay.className = 'price_photographer';
         priceDay.textContent = price + "€ / jour";
         favorite.textContent = totalLikes + " ♥ ";
