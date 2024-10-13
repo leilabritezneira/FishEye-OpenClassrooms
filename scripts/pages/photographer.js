@@ -40,13 +40,16 @@ async function displayData(photographer, photos) {
     const photographersSection = document.querySelector(".photographer-information");
     const photographersImage= document.querySelector(".photographer-image");
     const photographersPrice= document.querySelector(".photographer-price");
+    const testABC= document.querySelector(".photographer-price");
     const photographerHeaderDOM = photographerHeader(photographer);
     const photographerPictureDOM = photographerPicture(photographer);
     const photographersPriceDOM = photographerPrice(photographer, photos);
+    const test = picture(photographer);
 
     photographersSection.appendChild(photographerHeaderDOM);
     photographersImage.appendChild(photographerPictureDOM);
     photographersPrice.appendChild(photographersPriceDOM);
+    testABC.appendChild(test);
 }
 
 function photographerHeader(data) {
@@ -101,6 +104,17 @@ function photographerPrice(data, photos) {
         photographerPriceHTML.appendChild(priceDay);
 
     return photographerPriceHTML;
+}
+
+function picture(data) {
+
+    const picture = `assets/photos/${data.name}/`; 
+    const testHTML = document.createElement( 'img' );
+    console.log(picture);
+
+    return testHTML;
+
+    
 }
 
 async function init() {
